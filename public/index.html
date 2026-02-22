@@ -1,0 +1,116 @@
+<!-- 
+  Estructura visual de la aplicación.
+  Carga Tailwind CSS para los estilos y define el contenedor para el CRUD de estudiantes.
+-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Ana Contreras, Diana Sierra, Darwin Colmenares">
+    <title>Gestión de Estudiantes - CRUD</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-900 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <header class="mb-10 text-center">
+            <h1 class="text-4xl font-extrabold text-indigo-600 mb-2">Sistema Escolar (Tarea SD3)</h1>
+            <p class="text-gray-600 text-sm">Gestión de Estudiantes (Node.js + TS + Tailwind + MongoDB)</p>
+            <p class="text-gray-600 text-sm">UC Base de Datos II - Estudiantes: <span class="text-blue-600">Ana
+                    Contreras, Diana Sierra y Darwin
+                    Colmenares</span>
+            </p>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Formulario -->
+            <div class="lg:col-span-1">
+                <div class="bg-white rounded-xl shadow-lg p-6 sticky top-8">
+                    <h2 id="form-title" class="text-xl font-bold mb-6 text-gray-800">Agregar Estudiante</h2>
+                    <form id="student-form" class="space-y-4">
+                        <input type="hidden" id="student-id">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Nombre Completo</label>
+                            <input type="text" id="nombre" required
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Cédula</label>
+                            <input type="number" id="cedula" required
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Carrera</label>
+                            <input type="text" id="carrera" required
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Trayecto Actual</label>
+                            <input type="number" id="trayecto" required
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all">
+                        </div>
+                        <div class="pt-2 flex gap-2">
+                            <button type="submit" id="submit-btn"
+                                class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 rounded-lg transition-colors shadow-md">
+                                Guardar Estudiante
+                            </button>
+                            <button type="button" id="cancel-btn"
+                                class="hidden flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold py-2 rounded-lg transition-colors">
+                                Cancelar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Tabla de Datos -->
+            <div class="lg:col-span-2">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="p-6 border-b border-gray-100 flex justify-between items-center">
+                        <h2 class="text-xl font-bold text-gray-800">Lista de Estudiantes</h2>
+                        <span id="student-count"
+                            class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-sm font-medium">0
+                            Estudiantes</span>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left">
+                            <thead class="bg-gray-50 text-gray-600 text-sm uppercase font-semibold">
+                                <tr>
+                                    <th class="px-6 py-4">Nombre</th>
+                                    <th class="px-6 py-4">Cédula</th>
+                                    <th class="px-6 py-4">Carrera</th>
+                                    <th class="px-6 py-4 text-center">Trayecto</th>
+                                    <th class="px-6 py-4 text-right">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="student-list" class="divide-y divide-gray-100">
+                                <!-- Datos cargados por JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="no-data" class="hidden p-12 text-center text-gray-500">
+                        No hay estudiantes registrados.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast de Notificaciones (Opcional pero recomendado para UX premium) -->
+    <div id="toast"
+        class="fixed bottom-4 right-4 transform translate-y-20 opacity-0 transition-all duration-300 bg-gray-900 text-white px-6 py-3 rounded-lg shadow-2xl flex items-center space-x-2">
+        <span id="toast-msg">Mensaje informativo</span>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
