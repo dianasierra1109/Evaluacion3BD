@@ -27,7 +27,7 @@ La aplicación utiliza 5 colecciones principales en MongoDB:
 1. **Clonar el repositorio:**
    Si estás viendo este proyecto desde YouTube, asegúrate de tener el link del repositorio de Git y ejecútalo en tu terminal:
    ```bash
-   git clone <URL_DEL_REPOSITORIO>
+   git clone https://github.com/dianasierra1109/Evaluacion3BD.git
    cd crud-node-ts-tailwind
    ```
 
